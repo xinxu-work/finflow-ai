@@ -1,0 +1,15 @@
+# profiles.yml — place in ~/.dbt/profiles.yml
+# Update with your Supabase connection details
+
+expense_tracker:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: "YOUR_SUPABASE_HOST.supabase.co"  # e.g., db.xxxxxxxxxxxx.supabase.co
+      port: 5432
+      user: "postgres"
+      password: "YOUR_SUPABASE_DB_PASSWORD"
+      dbname: "postgres"
+      schema: "public"
+      threads: 2

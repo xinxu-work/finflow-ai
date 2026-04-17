@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: fct_monthly_summary
+    description: "Monthly aggregated transactions by category with YTD running totals"
+    columns:
+      - name: year_month
+        description: "Month in YYYY-MM format"
+        tests:
+          - not_null
+      - name: category_name
+        tests:
+          - not_null
+      - name: total_amount
+        tests:
+          - not_null
+
+  - name: fct_savings_rate
+    description: "Monthly income vs expenses vs savings with savings rate percentages and 3-month rolling averages"
+    columns:
+      - name: year_month
+        description: "Month in YYYY-MM format"
+        tests:
+          - unique
+          - not_null
+
+  - name: fct_budget_vs_actual
+    description: "Budget vs actual spending comparison with variance and utilisation metrics"
+    columns:
+      - name: year_month
+        tests:
+          - not_null
+      - name: budget_status
+        tests:
+          - accepted_values:
+              values: ['over_budget', 'near_budget', 'within_budget']
